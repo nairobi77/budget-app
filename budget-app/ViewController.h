@@ -9,8 +9,6 @@
 #import "TransactionDataModel.h"
 
 @interface ViewController : UIViewController
-
-@property (nonatomic, strong) NSArray<TransactionDataModel *> *data;
-
+@property (nonatomic, strong) NSArray<TransactionDataModel *> *dataArray;
 @end
 

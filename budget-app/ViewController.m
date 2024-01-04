@@ -17,9 +17,8 @@ typedef struct {
     NSString *type;
 } DataModel;
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
-@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation ViewController
@@ -31,41 +30,47 @@ typedef struct {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.data = self.dataModelCollection;
-    [self.collectionView registerClass:[TransactionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
-
+    self.dataArray = self.dataModelCollection;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - UITableViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.data.count;
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView          cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    TransactionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
-    // Configure the cell with data from YourDataModel
-    TransactionDataModel *dataModel = self.data[indexPath.item];
-    cell.date.text = dataModel.date;
-    cell.amount.text = dataModel.amount;
-    cell.type.text = dataModel.type;
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+
+    // Get the data model object for the current row
+    TransactionDataModel *dataItem = self.dataArray[indexPath.row];
+
+    // Populate the cell with data
+    cell.textLabel.text = dataItem.date;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ | %@", dataItem.amount, dataItem.type];
 
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    return CGSizeMake(collectionView.bounds.size.width, 30);
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
-#pragma mark - UICollectionViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Handle row selection if needed
+}
 
-// Implement delegate methods if needed
+#pragma mark - UITableViewDelegate
+
 
 -(NSArray<TransactionDataModel*>*)dataModelCollection {
     NSMutableArray<TransactionDataModel *> *collection = [[NSMutableArray alloc] init];
