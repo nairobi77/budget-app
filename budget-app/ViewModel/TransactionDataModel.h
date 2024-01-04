@@ -9,9 +9,9 @@
 
 @interface TransactionDataModel : NSObject
 
-@property (nonatomic, strong) NSNumber *id;
-@property (nonatomic, strong) NSString *date;
-@property (nonatomic, strong) NSString *amount;
-@property (nonatomic, strong) NSString *type;
+@property (assign, nonatomic) NSInteger *objectId;
+@property (strong, nonatomic) NSString *date;
+@property (assign, nonatomic) NSString *amount;
+@property (strong, nonatomic) NSString *type;
 
 @end

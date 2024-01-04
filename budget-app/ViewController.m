@@ -68,13 +68,12 @@ typedef struct {
 // Implement delegate methods if needed
 
 -(NSArray<TransactionDataModel*>*)dataModelCollection {
-    NSMutableArray<TransactionDataModel*> *collection = [[NSMutableArray alloc] init];
-    TransactionDataModel *data = [[TransactionDataModel alloc] init];
-    for(int i = 0; i < 100; i++) {
-        
-        data.id = @1;
-        data.date = @"27.12.2023";
-        data.amount = @"1400";
+    NSMutableArray<TransactionDataModel *> *collection = [[NSMutableArray alloc] init];
+    for(NSInteger i = 0; i < 100; i++) {
+        TransactionDataModel* data = [[TransactionDataModel alloc] init];
+        [data setObjectId: &i];
+        [data setDate: @"27.12.2023"];
+        [data setAmount: [NSString stringWithFormat:@"%ld", (long)i]];
         data.type = @"shop";
         [collection addObject:data];
     };

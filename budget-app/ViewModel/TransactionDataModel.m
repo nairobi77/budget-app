@@ -8,6 +8,4 @@
 #import "TransactionDataModel.h"
 
 @implementation TransactionDataModel
-@synthesize id, date, amount, type;
-
 @end

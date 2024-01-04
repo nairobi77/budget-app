@@ -16,9 +16,9 @@
         self.container = [[UIStackView alloc] initWithFrame:frame];
         [self.container setAxis:UILayoutConstraintAxisHorizontal];
         [self.container setSpacing:8];
+        [self.container setDistribution:UIStackViewDistributionFillEqually];
         
         [self.contentView addSubview:self.container];
-//        [self.container autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:7];
         
         CGFloat labelWidth = frame.size.width/3;
         CGFloat labelHeigth = frame.size.height/2;
