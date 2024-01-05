@@ -7,11 +7,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TransactionDataModel : NSObject
+@interface TransactionDataModel : NSObject <NSCoding>
 
-@property (assign, nonatomic) NSInteger *objectId;
-@property (strong, nonatomic) NSString *date;
-@property (assign, nonatomic) NSString *amount;
-@property (strong, nonatomic) NSString *type;
+@property (assign, nonatomic) NSInteger objectId;
+@property (strong, nonatomic, nullable) NSString *date;
+@property (assign, nonatomic, nullable) NSString *amount;
+@property (strong, nonatomic, nullable) NSString *type;
 
 @end

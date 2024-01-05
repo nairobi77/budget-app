@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "TransactionDataModel.h"
 #import "TransactionViewCell.h"
+#import "Repository.h"
 
 
 typedef struct {
@@ -19,10 +20,10 @@ typedef struct {
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) Repository *repository;
 @end
 
 @implementation ViewController
-
 
 - (IBAction)addButton:(id)sender {
     NSLog(@"Add button pressed");
@@ -30,7 +31,8 @@ typedef struct {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataArray = self.dataModelCollection;
+    self.repository = [[Repository alloc] init];
+    self.dataArray = [self.repository getData];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
@@ -71,18 +73,4 @@ typedef struct {
 
 #pragma mark - UITableViewDelegate
 
-
--(NSArray<TransactionDataModel*>*)dataModelCollection {
-    NSMutableArray<TransactionDataModel *> *collection = [[NSMutableArray alloc] init];
-    for(NSInteger i = 0; i < 100; i++) {
-        TransactionDataModel* data = [[TransactionDataModel alloc] init];
-        [data setObjectId: &i];
-        [data setDate: @"27.12.2023"];
-        [data setAmount: [NSString stringWithFormat:@"%ld", (long)i]];
-        data.type = @"shop";
-        [collection addObject:data];
-    };
-   
-    return collection;
-}
 @end
