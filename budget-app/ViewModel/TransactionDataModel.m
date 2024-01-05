@@ -26,4 +26,7 @@
     return self;
 }
 
++ (BOOL)supportsSecureCoding{
+    return YES;
+}
 @end

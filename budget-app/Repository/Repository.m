@@ -9,35 +9,36 @@
 #import "Repository.h"
 
 @implementation Repository
-
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        self.dataCollection = self.dataModelCollection;
+- (void)saveData:(TransactionDataModel *)transactionalData {
+    NSMutableArray<TransactionDataModel *> *existingObjects = [self getData];
+    if (!existingObjects) {
+        existingObjects = [NSMutableArray array];
     }
-    return self;
+    
+    [existingObjects addObject:transactionalData];
+
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:existingObjects requiringSecureCoding:NO error:nil];
+    [data writeToFile:[self filePath] atomically:YES];
+
 }
 
-- (void)saveData:(TransactionDataModel *)data {
-    // implement later
+- (NSMutableArray<TransactionDataModel *> *)getData {
+    NSData *data = [NSData dataWithContentsOfFile:[self filePath]];
+    NSError *error = nil;
+    NSSet *set = [NSSet setWithArray:@[
+                          [NSMutableArray class],
+                          [TransactionDataModel class],
+                          [NSString class]
+                          ]];
+    NSMutableArray<TransactionDataModel *> *storedObjects = [NSKeyedUnarchiver unarchivedObjectOfClasses:set
+                                                                                                fromData:data
+                                                                                                   error:&error];
+    return storedObjects;
 }
 
-- (NSArray<TransactionDataModel *> *)getData {
-    return self.dataCollection;
+- (NSString *)filePath {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData.archive"];
 }
 
--(NSArray<TransactionDataModel*>*)dataModelCollection {
-    NSMutableArray<TransactionDataModel *> *collection = [[NSMutableArray alloc] init];
-    for(NSInteger i = 0; i < 100; i++) {
-        TransactionDataModel* data = [[TransactionDataModel alloc] init];
-        [data setObjectId: i];
-        [data setDate: @"27.12.2023"];
-        [data setAmount: [NSString stringWithFormat:@"%ld", (long)i]];
-        data.type = @"shop";
-        [collection addObject:data];
-    };
-   
-    return collection;
-}
+
 @end

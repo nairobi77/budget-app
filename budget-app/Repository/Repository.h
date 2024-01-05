@@ -9,7 +9,6 @@
 #import "TransactionDataModel.h"
 
 @interface Repository: NSObject
-@property (nonatomic, strong) NSArray *dataCollection;
--(void)saveData:(TransactionDataModel *)data;
--(NSArray<TransactionDataModel *> *)getData;
+-(void)saveData:(TransactionDataModel *)transactionalData;
+-(NSMutableArray<TransactionDataModel *> *)getData;
 @end
