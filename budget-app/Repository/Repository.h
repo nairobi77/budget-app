@@ -9,6 +9,6 @@
 #import "TransactionDataModel.h"
 
 @interface Repository: NSObject
--(void)saveData:(TransactionDataModel *)transactionalData;
--(NSMutableArray<TransactionDataModel *> *)getData;
++(void)saveData:(TransactionDataModel *)transactionalData;
++(NSMutableArray<TransactionDataModel *> *)getData;
 @end

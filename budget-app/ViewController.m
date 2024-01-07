@@ -10,14 +10,6 @@
 #import "TransactionViewCell.h"
 #import "Repository.h"
 
-
-typedef struct {
-    int id;
-    NSString *date;
-    NSString *amount;
-    NSString *type;
-} DataModel;
-
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Repository *repository;
@@ -31,8 +23,7 @@ typedef struct {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.repository = [[Repository alloc] init];
-    self.dataArray = [self.repository getData];
+    self.dataArray = [Repository getData];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
@@ -72,5 +63,9 @@ typedef struct {
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)update:(NSArray<TransactionDataModel *> *)dataArray {
+    self.dataArray = dataArray;
+}
 
 @end

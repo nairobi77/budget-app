@@ -9,7 +9,7 @@
 #import "Repository.h"
 
 @implementation Repository
-- (void)saveData:(TransactionDataModel *)transactionalData {
++(void)saveData:(TransactionDataModel *)transactionalData {
     NSMutableArray<TransactionDataModel *> *existingObjects = [self getData];
     if (!existingObjects) {
         existingObjects = [NSMutableArray array];
@@ -22,7 +22,7 @@
 
 }
 
-- (NSMutableArray<TransactionDataModel *> *)getData {
++ (NSMutableArray<TransactionDataModel *> *)getData {
     NSData *data = [NSData dataWithContentsOfFile:[self filePath]];
     NSError *error = nil;
     NSSet *set = [NSSet setWithArray:@[
@@ -36,8 +36,8 @@
     return storedObjects;
 }
 
-- (NSString *)filePath {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData.archive"];
++ (NSString *)filePath {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_1.archive"];
 }
 
 

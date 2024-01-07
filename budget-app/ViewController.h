@@ -10,5 +10,6 @@
 
 @interface ViewController : UIViewController
 @property (nonatomic, strong) NSArray<TransactionDataModel *> *dataArray;
+-(void)update:(NSArray<TransactionDataModel *> *) dataArray;
 @end
 
