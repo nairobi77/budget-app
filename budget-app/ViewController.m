@@ -34,11 +34,8 @@
     [super viewDidLoad];
     self.repository = [[Repository alloc] init];
     self.repository.mainViewController = self;
-    
-    self.repository.dateFormatter = [[NSDateFormatter alloc] init];
-    self.repository.dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-    self.repository.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    self.repository.dateFormatter.timeStyle = NSDateFormatterNoStyle;
+
+    self.repository.dateFormatter = self.makeDateFormatter;
     
     self.dataArray = [self.repository getData];
     self.tableView.dataSource = self;
@@ -82,6 +79,15 @@
 - (void)update:(NSArray<TransactionDataModel *> *)dataArray {
     self.dataArray = dataArray;
     [self.tableView reloadData];
+}
+
+-(NSDateFormatter *)makeDateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateFormatter setDateStyle: NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle: NSDateFormatterMediumStyle];
+    return dateFormatter;
 }
 
 @end

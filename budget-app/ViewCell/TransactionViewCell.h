@@ -9,7 +9,6 @@
 
 @interface TransactionViewCell : UITableViewCell
 
-
 @property (nonatomic, strong) UIStackView *container;
 @property (nonatomic, strong) UILabel *date;
 @property (nonatomic, strong) UILabel *amount;

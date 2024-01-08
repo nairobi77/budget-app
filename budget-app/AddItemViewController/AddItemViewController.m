@@ -22,7 +22,7 @@
     NSString *amountText = self.amountInputField.text;
     NSString *noteText = self.noteField.text;
     
-    if (amountText.length > 0 && noteText.length > 3) {
+    if (amountText.length > 0 && noteText.length > 0) {
         TransactionDataModel *dataModel = [[TransactionDataModel alloc] init];
         dataModel.amount = amountText;
         dataModel.type = noteText;
