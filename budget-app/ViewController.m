@@ -9,21 +9,38 @@
 #import "TransactionDataModel.h"
 #import "TransactionViewCell.h"
 #import "Repository.h"
+#import "AddItemViewController.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Repository *repository;
+@property (strong, nonatomic) AddItemViewController *addItemViewController;
 @end
 
 @implementation ViewController
 
 - (IBAction)addButton:(id)sender {
     NSLog(@"Add button pressed");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+    
+    AddItemViewController *additemVC = [storyboard instantiateViewControllerWithIdentifier: @"AddItemViewController"];
+    additemVC.repository = self.repository;
+    [self presentViewController:additemVC
+                       animated:YES
+                     completion:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataArray = [Repository getData];
+    self.repository = [[Repository alloc] init];
+    self.repository.mainViewController = self;
+    
+    self.repository.dateFormatter = [[NSDateFormatter alloc] init];
+    self.repository.dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    self.repository.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+    self.repository.dateFormatter.timeStyle = NSDateFormatterNoStyle;
+    
+    self.dataArray = [self.repository getData];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
@@ -35,19 +52,19 @@
     return self.dataArray.count;
 }
 
+#pragma mark - UITableViewDelegate
+
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
+    // TODO: migrate to TransactionViewCell
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-
-    // Get the data model object for the current row
     TransactionDataModel *dataItem = self.dataArray[indexPath.row];
 
-    // Populate the cell with data
     cell.textLabel.text = dataItem.date;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ | %@", dataItem.amount, dataItem.type];
 
@@ -62,10 +79,9 @@
     // Handle row selection if needed
 }
 
-#pragma mark - UITableViewDelegate
-
 - (void)update:(NSArray<TransactionDataModel *> *)dataArray {
     self.dataArray = dataArray;
+    [self.tableView reloadData];
 }
 
 @end

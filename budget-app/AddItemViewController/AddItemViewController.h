@@ -6,7 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Repository.h"
 
 @interface AddItemViewController : UIViewController
+
+@property (strong, nonatomic) Repository *repository;
 
 @end

@@ -7,8 +7,14 @@
 
 #import <Foundation/Foundation.h>
 #import "TransactionDataModel.h"
+#import "ViewController.h"
 
 @interface Repository: NSObject
-+(void)saveData:(TransactionDataModel *)transactionalData;
-+(NSMutableArray<TransactionDataModel *> *)getData;
+
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (weak, nonatomic) ViewController *mainViewController;
+
+-(void)saveData:(TransactionDataModel *)transactionalData;
+-(NSMutableArray<TransactionDataModel *> *)getData;
+
 @end

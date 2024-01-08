@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TransactionViewCell : UICollectionViewCell
+@interface TransactionViewCell : UITableViewCell
 
 
 @property (nonatomic, strong) UIStackView *container;

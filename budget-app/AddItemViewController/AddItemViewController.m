@@ -17,16 +17,18 @@
 @end
 
 @implementation AddItemViewController
+
 - (IBAction)saveItemAction:(id)sender {
     NSString *amountText = self.amountInputField.text;
     NSString *noteText = self.noteField.text;
-    NSLog(@"Data is %@ %@", amountText, noteText);
-    TransactionDataModel *dataModel = [[TransactionDataModel alloc] init];
-    dataModel.amount = amountText;
-    dataModel.type = noteText;
-    dataModel.date = @"7.01.2024";
-    [Repository saveData:dataModel];
-    // todo: call update main view controller and close self
+    
+    if (amountText.length > 0 && noteText.length > 3) {
+        TransactionDataModel *dataModel = [[TransactionDataModel alloc] init];
+        dataModel.amount = amountText;
+        dataModel.type = noteText;
+        [self.repository saveData:dataModel];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
