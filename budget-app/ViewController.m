@@ -22,7 +22,6 @@
 @implementation ViewController
 
 - (IBAction)addButtonPressed:(id)sender {
-    NSLog(@"Add button pressed");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
     
     AddItemViewController *additemVC = [storyboard instantiateViewControllerWithIdentifier: @"AddItemViewController"];
@@ -54,16 +53,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    TransactionViewCell *cell = (TransactionViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-    // TODO: migrate to TransactionViewCell
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
     TransactionDataModel *dataItem = self.dataArray[indexPath.row];
+    
+    [cell update: dataItem];
 
-    cell.textLabel.text = dataItem.date;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ | %@", dataItem.amount, dataItem.type];
 
     return cell;
 }

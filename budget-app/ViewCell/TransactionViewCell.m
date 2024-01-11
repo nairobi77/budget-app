@@ -8,40 +8,14 @@
 #import "TransactionViewCell.h"
 
 @interface TransactionViewCell ()
+@property (strong, nonatomic) IBOutlet UILabel *date;
+@property (strong, nonatomic) IBOutlet UILabel *amount;
+@property (strong, nonatomic) IBOutlet UILabel *type;
 
-@property (nonatomic, strong) UIStackView *container;
-@property (nonatomic, strong) UILabel *date;
-@property (nonatomic, strong) UILabel *amount;
-@property (nonatomic, strong) UILabel *type;
 
 @end
 
 @implementation TransactionViewCell
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialize and configure your labels here
-        self.container = [[UIStackView alloc] initWithFrame:frame];
-        [self.container setAxis:UILayoutConstraintAxisHorizontal];
-        [self.container setSpacing:8];
-        [self.container setDistribution:UIStackViewDistributionFillEqually];
-        
-        [self.contentView addSubview:self.container];
-        
-        CGFloat labelWidth = frame.size.width/3;
-        CGFloat labelHeigth = frame.size.height/2;
-        self.date = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, labelHeigth)];
-        self.amount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, labelHeigth)];
-        self.type = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, labelHeigth)];
-        
-        [self.container addArrangedSubview:self.date];
-        [self.container addArrangedSubview:self.amount];
-        [self.container addArrangedSubview:self.type];
-
-    }
-    return self;
-}
 
 - (void)update:(TransactionDataModel *)dataModel {
     self.date.text = dataModel.date;

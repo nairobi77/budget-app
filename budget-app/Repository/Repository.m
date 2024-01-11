@@ -47,15 +47,15 @@
 }
 
 - (NSString *)filePath {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_2.archive"];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_4.archive"];
 }
 
 -(NSDateFormatter *)makeDateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [dateFormatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"]];
     [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormatter setDateStyle: NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle: NSDateFormatterMediumStyle];
+    [dateFormatter setDateStyle: NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle: NSDateFormatterShortStyle];
     return dateFormatter;
 }
 

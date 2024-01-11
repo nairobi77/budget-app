@@ -9,5 +9,7 @@
 #import "TransactionDataModel.h"
 
 @interface TransactionViewCell : UITableViewCell
+
 -(void)update:(TransactionDataModel *)dataModel;
+
 @end
