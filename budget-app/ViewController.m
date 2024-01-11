@@ -11,15 +11,17 @@
 #import "Repository.h"
 #import "AddItemViewController.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, ViewInput>
+
+@property (nonatomic, strong) NSArray<TransactionDataModel *> *dataArray;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Repository *repository;
-@property (strong, nonatomic) AddItemViewController *addItemViewController;
+
 @end
 
 @implementation ViewController
 
-- (IBAction)addButton:(id)sender {
+- (IBAction)addButtonPressed:(id)sender {
     NSLog(@"Add button pressed");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
     
@@ -32,10 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.repository = [[Repository alloc] init];
-    self.repository.mainViewController = self;
-
-    self.repository.dateFormatter = self.makeDateFormatter;
+    self.repository = [Repository new];
+    self.repository.view = self;
     
     self.dataArray = [self.repository getData];
     self.tableView.dataSource = self;
@@ -76,18 +76,11 @@
     // Handle row selection if needed
 }
 
+#pragma mark - ViewInput
+
 - (void)update:(NSArray<TransactionDataModel *> *)dataArray {
     self.dataArray = dataArray;
     [self.tableView reloadData];
-}
-
--(NSDateFormatter *)makeDateFormatter {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormatter setDateStyle: NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle: NSDateFormatterMediumStyle];
-    return dateFormatter;
 }
 
 @end

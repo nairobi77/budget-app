@@ -11,7 +11,7 @@
 
 @property (assign, nonatomic) NSInteger objectId;
 @property (strong, nonatomic, nullable) NSString *date;
-@property (assign, nonatomic, nullable) NSString *amount;
+@property (strong, nonatomic, nullable) NSString *amount;
 @property (strong, nonatomic, nullable) NSString *type;
 
 @end

@@ -12,7 +12,7 @@
 @interface Repository: NSObject
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
-@property (weak, nonatomic) ViewController *mainViewController;
+@property (weak, nonatomic) id<ViewInput> view;
 
 -(void)saveData:(TransactionDataModel *)transactionalData;
 -(NSMutableArray<TransactionDataModel *> *)getData;

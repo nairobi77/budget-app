@@ -10,6 +10,6 @@
 
 @interface AddItemViewController : UIViewController
 
-@property (strong, nonatomic) Repository *repository;
+@property (weak, nonatomic) Repository *repository;
 
 @end

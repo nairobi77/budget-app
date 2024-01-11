@@ -7,6 +7,15 @@
 
 #import "TransactionViewCell.h"
 
+@interface TransactionViewCell ()
+
+@property (nonatomic, strong) UIStackView *container;
+@property (nonatomic, strong) UILabel *date;
+@property (nonatomic, strong) UILabel *amount;
+@property (nonatomic, strong) UILabel *type;
+
+@end
+
 @implementation TransactionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -32,6 +41,12 @@
 
     }
     return self;
+}
+
+- (void)update:(TransactionDataModel *)dataModel {
+    self.date.text = dataModel.date;
+    self.amount.text = dataModel.amount;
+    self.type.text = dataModel.type;
 }
 
 @end

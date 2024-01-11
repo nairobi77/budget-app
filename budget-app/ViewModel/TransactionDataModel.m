@@ -7,21 +7,28 @@
 
 #import "TransactionDataModel.h"
 
+
+NSString *const objectIdKey = @"objectId";
+NSString *const dateKey = @"date";
+NSString *const amountKey = @"amount";
+NSString *const typeKey = @"type";
+
+
 @implementation TransactionDataModel
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeInteger:self.objectId forKey:@"objectId"];
-    [coder encodeObject:self.date forKey:@"date"];
-    [coder encodeObject:self.amount forKey:@"amount"];
-    [coder encodeObject:self.type forKey:@"type"];
+    [coder encodeInteger:self.objectId forKey:objectIdKey];
+    [coder encodeObject:self.date forKey:dateKey];
+    [coder encodeObject:self.amount forKey:amountKey];
+    [coder encodeObject:self.type forKey:typeKey];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder { 
     self = [super init];
     if (self) {
-        _objectId = [coder decodeIntegerForKey:@"objectId"];
-        _date = [coder decodeObjectForKey:@"date"];
-        _amount = [coder decodeObjectForKey:@"amount"];
-        _type = [coder decodeObjectForKey:@"type"];
+        _objectId = [coder decodeIntegerForKey:objectIdKey];
+        _date = [coder decodeObjectForKey:dateKey];
+        _amount = [coder decodeObjectForKey:amountKey];
+        _type = [coder decodeObjectForKey:typeKey];
     }
     return self;
 }

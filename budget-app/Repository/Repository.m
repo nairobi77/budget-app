@@ -10,8 +10,14 @@
 
 @implementation Repository
 
+-(id)init {
+    self = [super init];
+    self.dateFormatter = [self makeDateFormatter];
+    return self;
+}
+
 -(void)saveData:(TransactionDataModel *)transactionalData {
-    NSMutableArray<TransactionDataModel *> *existingObjects = [self getData];
+    NSMutableArray<TransactionDataModel *> *existingObjects = self.getData;
     if (!existingObjects) {
         existingObjects = [NSMutableArray array];
     }
@@ -20,14 +26,14 @@
     [existingObjects addObject:transactionalData];
 
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:existingObjects requiringSecureCoding:NO error:nil];
-    [data writeToFile:[self filePath] atomically:YES];
+    [data writeToFile:self.filePath atomically:YES];
     NSMutableArray<TransactionDataModel *> *actualData = self.getData;
-    [self.mainViewController update: actualData];
+    [self.view update: actualData];
 
 }
 
 - (NSMutableArray<TransactionDataModel *> *)getData {
-    NSData *data = [NSData dataWithContentsOfFile:[self filePath]];
+    NSData *data = [NSData dataWithContentsOfFile:self.filePath];
     NSError *error = nil;
     NSSet *set = [NSSet setWithArray:@[
                           [NSMutableArray class],
@@ -41,7 +47,16 @@
 }
 
 - (NSString *)filePath {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_1.archive"];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_2.archive"];
+}
+
+-(NSDateFormatter *)makeDateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateFormatter setDateStyle: NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle: NSDateFormatterMediumStyle];
+    return dateFormatter;
 }
 
 
