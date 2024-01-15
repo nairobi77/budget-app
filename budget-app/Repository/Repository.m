@@ -10,9 +10,11 @@
 
 @implementation Repository
 
--(id)init {
+-(instancetype)init {
     self = [super init];
-    self.dateFormatter = [self makeDateFormatter];
+    if (self) {
+        self.dateFormatter = [self makeDateFormatter];
+    }
     return self;
 }
 
@@ -52,10 +54,10 @@
 
 -(NSDateFormatter *)makeDateFormatter {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale: [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"]];
-    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormatter setDateStyle: NSDateFormatterShortStyle];
-    [dateFormatter setTimeStyle: NSDateFormatterShortStyle];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
+    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
     return dateFormatter;
 }
 
