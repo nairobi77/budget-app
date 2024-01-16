@@ -23,4 +23,8 @@
     self.type.text = dataModel.type;
 }
 
+- (void)setupLayout {
+    
+}
+
 @end
