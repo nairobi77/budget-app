@@ -22,9 +22,8 @@
 @implementation ViewController
 
 - (IBAction)addButtonPressed:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
     
-    AddItemViewController *additemVC = [storyboard instantiateViewControllerWithIdentifier: @"AddItemViewController"];
+    AddItemViewController *additemVC = [AddItemViewController new];
     additemVC.repository = self.repository;
     [self presentViewController:additemVC
                        animated:YES
