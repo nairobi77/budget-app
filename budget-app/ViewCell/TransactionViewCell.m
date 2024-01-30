@@ -19,7 +19,7 @@
 
 - (void)update:(TransactionDataModel *)dataModel {
     self.date.text = dataModel.date;
-    self.amount.text = dataModel.amount;
+    self.amount.text = [dataModel.amount stringValue];
     self.type.text = dataModel.type;
 }
 

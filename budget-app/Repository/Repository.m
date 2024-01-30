@@ -40,7 +40,8 @@
     NSSet *set = [NSSet setWithArray:@[
                           [NSMutableArray class],
                           [TransactionDataModel class],
-                          [NSString class]
+                          [NSString class],
+                          [NSDecimalNumber class]
                           ]];
     NSMutableArray<TransactionDataModel *> *storedObjects = [NSKeyedUnarchiver unarchivedObjectOfClasses:set
                                                                                                 fromData:data
@@ -49,7 +50,7 @@
 }
 
 - (NSString *)filePath {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_4.archive"];
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_5.archive"];
 }
 
 -(NSDateFormatter *)makeDateFormatter {

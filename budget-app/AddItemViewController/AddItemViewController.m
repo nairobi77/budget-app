@@ -92,12 +92,12 @@ NSString *const savePuttonTitle = @"Save";
 
 
 - (void)saveItem:(UIButton *) sender {
-    NSString *amountText = self.amountInput.text;
+    NSDecimalNumber *amount = [NSDecimalNumber decimalNumberWithString:self.amountInput.text];
     NSString *noteText = self.noteInput.text;
     
-    if (amountText.length > 0 && noteText.length > 0) {
+    if (amount > 0 && noteText.length > 0) {
         TransactionDataModel *dataModel = [[TransactionDataModel alloc] init];
-        dataModel.amount = amountText;
+        dataModel.amount = amount;
         dataModel.type = noteText;
         [self.repository saveData:dataModel];
         [self dismissViewControllerAnimated:YES completion:nil];
