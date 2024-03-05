@@ -7,10 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TransactionDataModel : NSObject <NSSecureCoding>
+@interface TransactionDataModel : NSObject
 
-@property (assign, nonatomic) NSInteger objectId;
-@property (strong, nonatomic, nullable) NSString *date;
+@property (strong, nonatomic, nullable) NSDate *date;
 @property (strong, nonatomic, nullable) NSDecimalNumber *amount;
 @property (strong, nonatomic, nullable) NSString *type;
 

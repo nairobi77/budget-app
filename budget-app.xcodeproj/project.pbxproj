@@ -22,6 +22,8 @@
 		C732ECFC2B39A1D9008AE12C /* budget_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C732ECFB2B39A1D9008AE12C /* budget_appTests.m */; };
 		C732ED062B39A1D9008AE12C /* budget_appUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C732ED052B39A1D9008AE12C /* budget_appUITests.m */; };
 		C732ED082B39A1D9008AE12C /* budget_appUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C732ED072B39A1D9008AE12C /* budget_appUITestsLaunchTests.m */; };
+		C78009F32B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C78009F12B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodeld */; };
+		C78009F62B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C78009F42B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		C732ED012B39A1D9008AE12C /* budget-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "budget-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C732ED052B39A1D9008AE12C /* budget_appUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = budget_appUITests.m; sourceTree = "<group>"; };
 		C732ED072B39A1D9008AE12C /* budget_appUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = budget_appUITestsLaunchTests.m; sourceTree = "<group>"; };
+		C78009F22B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetAppDataModel.xcdatamodel; sourceTree = "<group>"; };
+		C78009F52B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BudgetAppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		E370046635AC76628E3B84C6 /* Pods_budget_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_budget_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -176,6 +180,7 @@
 		C732ECDE2B39A1D6008AE12C /* budget-app */ = {
 			isa = PBXGroup;
 			children = (
+				C78009F12B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodeld */,
 				C71845642B4AA49A00B3CD73 /* AddItemViewController */,
 				C718455C2B48291E00B3CD73 /* Repository */,
 				C71845532B3C98E600B3CD73 /* ViewCell */,
@@ -191,6 +196,7 @@
 				C732ECED2B39A1D9008AE12C /* LaunchScreen.storyboard */,
 				C732ECF02B39A1D9008AE12C /* Info.plist */,
 				C732ECF12B39A1D9008AE12C /* main.m */,
+				C78009F42B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodeld */,
 			);
 			path = "budget-app";
 			sourceTree = "<group>";
@@ -391,8 +397,10 @@
 				C718455B2B3CB22000B3CD73 /* TransactionDataModel.m in Sources */,
 				C732ECE12B39A1D6008AE12C /* AppDelegate.m in Sources */,
 				C71845662B4AA4D000B3CD73 /* AddItemViewController.m in Sources */,
+				C78009F32B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodeld in Sources */,
 				C732ECF22B39A1D9008AE12C /* main.m in Sources */,
 				C732ECE42B39A1D6008AE12C /* SceneDelegate.m in Sources */,
+				C78009F62B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodeld in Sources */,
 				C71845562B3C998100B3CD73 /* TransactionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +735,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C78009F12B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C78009F22B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodel */,
+			);
+			currentVersion = C78009F22B97C19E00AEDBD3 /* BudgetAppDataModel.xcdatamodel */;
+			path = BudgetAppDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		C78009F42B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C78009F52B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodel */,
+			);
+			currentVersion = C78009F52B97C2CC00AEDBD3 /* BudgetAppDataModel.xcdatamodel */;
+			path = BudgetAppDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C732ECD42B39A1D6008AE12C /* Project object */;
 }

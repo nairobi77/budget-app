@@ -96,10 +96,12 @@ NSString *const savePuttonTitle = @"Save";
     NSString *noteText = self.noteInput.text;
     
     if (amount > 0 && noteText.length > 0) {
-        TransactionDataModel *dataModel = [[TransactionDataModel alloc] init];
+        TransactionDataModel *dataModel = [TransactionDataModel new];
         dataModel.amount = amount;
         dataModel.type = noteText;
+        dataModel.date = [NSDate now];
         [self.repository saveData:dataModel];
+        [self.vc updateWithModel:dataModel];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

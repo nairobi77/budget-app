@@ -11,9 +11,9 @@
 #import "Repository.h"
 #import "AddItemViewController.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate, ViewInput>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray<TransactionDataModel *> *dataArray;
+@property (nonatomic, strong) NSMutableArray<TransactionDataModel *> *dataArray;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Repository *repository;
 
@@ -25,6 +25,7 @@
     
     AddItemViewController *additemVC = [AddItemViewController new];
     additemVC.repository = self.repository;
+    additemVC.vc = self;
     [self presentViewController:additemVC
                        animated:YES
                      completion:nil];
@@ -33,8 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.repository = [Repository new];
-    self.repository.view = self;
-    
     self.dataArray = [self.repository getData];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -72,8 +71,8 @@
 
 #pragma mark - ViewInput
 
-- (void)update:(NSArray<TransactionDataModel *> *)dataArray {
-    self.dataArray = dataArray;
+-(void)updateWithModel:(TransactionDataModel *)dataModel {
+    [self.dataArray addObject:dataModel];
     [self.tableView reloadData];
 }
 

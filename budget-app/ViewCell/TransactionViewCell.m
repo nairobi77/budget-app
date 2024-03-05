@@ -18,7 +18,9 @@
 @implementation TransactionViewCell
 
 - (void)update:(TransactionDataModel *)dataModel {
-    self.date.text = dataModel.date;
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    self.date.text = [formatter stringFromDate:dataModel.date];
     self.amount.text = [dataModel.amount stringValue];
     self.type.text = dataModel.type;
 }

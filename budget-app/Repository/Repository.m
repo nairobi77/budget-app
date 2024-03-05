@@ -13,54 +13,45 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
-        self.dateFormatter = [self makeDateFormatter];
+        AppDelegate* appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.mangedContext = [[appDelegate persistentContainer] viewContext];
     }
     return self;
 }
 
 -(void)saveData:(TransactionDataModel *)transactionalData {
-    NSMutableArray<TransactionDataModel *> *existingObjects = self.getData;
-    if (!existingObjects) {
-        existingObjects = [NSMutableArray array];
+    
+    NSManagedObject* transaction = [NSEntityDescription insertNewObjectForEntityForName:@"DataModel"
+                                                                 inManagedObjectContext:self.mangedContext];
+    
+    [transaction setValue:[NSDate now] forKey:@"date"];
+    [transaction setValue:transactionalData.amount forKey:@"amount"];
+    [transaction setValue:transactionalData.type forKey:@"type"];
+    
+    NSError* error = nil;
+    if(![self.mangedContext save:&error]) {
+        NSLog(@"%@", [error localizedDescription]);
     }
-    NSString *date = [self.dateFormatter stringFromDate:[NSDate now]];
-    transactionalData.date = date;
-    [existingObjects addObject:transactionalData];
-
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:existingObjects requiringSecureCoding:NO error:nil];
-    [data writeToFile:self.filePath atomically:YES];
-    NSMutableArray<TransactionDataModel *> *actualData = self.getData;
-    [self.view update: actualData];
-
 }
 
 - (NSMutableArray<TransactionDataModel *> *)getData {
-    NSData *data = [NSData dataWithContentsOfFile:self.filePath];
-    NSError *error = nil;
-    NSSet *set = [NSSet setWithArray:@[
-                          [NSMutableArray class],
-                          [TransactionDataModel class],
-                          [NSString class],
-                          [NSDecimalNumber class]
-                          ]];
-    NSMutableArray<TransactionDataModel *> *storedObjects = [NSKeyedUnarchiver unarchivedObjectOfClasses:set
-                                                                                                fromData:data
-                                                                                                   error:&error];
+
+    NSFetchRequest* request = [NSFetchRequest new];
+    NSEntityDescription* description = [NSEntityDescription entityForName:@"DataModel"
+                                                   inManagedObjectContext:self.mangedContext];
+    [request setEntity:description];
+    NSError* error = nil;
+    NSArray* resultArray = [self.mangedContext executeFetchRequest:request error:&error];
+    NSMutableArray<TransactionDataModel *> *storedObjects = [NSMutableArray new];
+    
+    for (NSManagedObject * object in resultArray) {
+        TransactionDataModel *dataModel = [TransactionDataModel new];
+        dataModel.date = [object valueForKey:@"date"];
+        dataModel.amount = [object valueForKey:@"amount"];
+        dataModel.type = [object valueForKey:@"type"];
+        [storedObjects addObject: dataModel];
+    }
     return storedObjects;
 }
-
-- (NSString *)filePath {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"TransactionData_5.archive"];
-}
-
--(NSDateFormatter *)makeDateFormatter {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
-    dateFormatter.timeZone = [NSTimeZone systemTimeZone];
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    return dateFormatter;
-}
-
 
 @end
