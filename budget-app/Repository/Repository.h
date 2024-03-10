@@ -13,8 +13,6 @@
 
 @interface Repository: NSObject
 
-@property (strong, nonatomic) NSManagedObjectContext* mangedContext;
-
 -(void)saveData:(TransactionDataModel *)transactionalData;
 -(NSMutableArray<TransactionDataModel *> *)getData;
 
