@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,64 +20,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rTn-0O-dx3">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="776.66666666666663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" id="btt-vQ-DWk" customClass="TransactionViewCell">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="44.333332061767578"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="btt-vQ-DWk" id="yjt-4Q-ELO">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44.333332061767578"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0H-K7-dZH">
-                                                    <rect key="frame" x="8" y="0.0" width="377" height="44.333333333333336"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-ln-Zqf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="177" height="44.333333333333336"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="110" id="m4d-ct-egO"/>
-                                                                <constraint firstAttribute="height" constant="44" id="zHa-i7-IpG"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieh-Hf-KNG">
-                                                            <rect key="frame" x="177" y="0.0" width="100" height="44.333333333333336"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="ac7-vX-evA"/>
-                                                                <constraint firstAttribute="height" constant="44" id="oZL-8x-kj1"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEy-4k-wl6">
-                                                            <rect key="frame" x="277" y="0.0" width="100" height="44.333333333333336"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="44" id="1OM-o0-kfp"/>
-                                                                <constraint firstAttribute="width" constant="100" id="Xj8-PD-3tr"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="y0H-K7-dZH" firstAttribute="leading" secondItem="yjt-4Q-ELO" secondAttribute="leading" constant="8" id="ApG-2d-c8j"/>
-                                                <constraint firstAttribute="bottom" secondItem="y0H-K7-dZH" secondAttribute="bottom" id="YDT-Ej-wow"/>
-                                                <constraint firstItem="y0H-K7-dZH" firstAttribute="top" secondItem="yjt-4Q-ELO" secondAttribute="top" id="Zic-G6-lCs"/>
-                                                <constraint firstAttribute="trailing" secondItem="y0H-K7-dZH" secondAttribute="trailing" constant="8" id="y2d-mL-TaR"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="amount" destination="Ieh-Hf-KNG" id="2Bf-2o-c5X"/>
-                                            <outlet property="date" destination="Ycy-ln-Zqf" id="caj-Xa-FPp"/>
-                                            <outlet property="type" destination="tEy-4k-wl6" id="e8s-ta-JoW"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-gq-H3V">
                                 <rect key="frame" x="112" y="784.66666666666663" width="169" height="34.333333333333371"/>

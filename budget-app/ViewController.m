@@ -17,9 +17,11 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Repository *repository;
 
+
 @end
 
 @implementation ViewController
+static NSString *cellIdentifier = @"CellIdentifier";
 
 - (IBAction)addButtonPressed:(id)sender {
     
@@ -37,6 +39,7 @@
     self.dataArray = [self.repository getData];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView registerClass:TransactionViewCell.self forCellReuseIdentifier: cellIdentifier];
 }
 
 #pragma mark - UITableViewDataSource
@@ -50,8 +53,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"CellIdentifier";
-    TransactionViewCell *cell = (TransactionViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    TransactionViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[TransactionViewCell new] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+//    [cell setupLayout];
 
     TransactionDataModel *dataItem = self.dataArray[indexPath.row];
     

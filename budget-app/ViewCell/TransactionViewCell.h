@@ -8,8 +8,9 @@
 #import <UIKit/UIKit.h>
 #import "TransactionDataModel.h"
 
-@interface TransactionViewCell : UITableViewCell
+@interface TransactionViewCell: UITableViewCell
 
 -(void)update:(TransactionDataModel *)dataModel;
+-(void)setupLayout;
 
 @end
