@@ -11,6 +11,5 @@
 @interface TransactionViewCell: UITableViewCell
 
 -(void)update:(TransactionDataModel *)dataModel;
--(void)setupLayout;
 
 @end

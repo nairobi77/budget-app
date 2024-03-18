@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,43 +15,9 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rTn-0O-dx3">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="776.66666666666663"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-gq-H3V">
-                                <rect key="frame" x="112" y="784.66666666666663" width="169" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="+">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kbv-Qr-0Ga"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="bfM-gq-H3V" firstAttribute="centerX" secondItem="rTn-0O-dx3" secondAttribute="centerX" id="4NM-AK-MGh"/>
-                            <constraint firstItem="bfM-gq-H3V" firstAttribute="top" secondItem="rTn-0O-dx3" secondAttribute="bottom" constant="8" symbolic="YES" id="8yd-9p-uHf"/>
-                            <constraint firstAttribute="trailing" secondItem="rTn-0O-dx3" secondAttribute="trailing" id="HDb-di-Mq6"/>
-                            <constraint firstItem="bfM-gq-H3V" firstAttribute="top" secondItem="rTn-0O-dx3" secondAttribute="bottom" constant="8" id="RaQ-5a-zyZ"/>
-                            <constraint firstItem="bfM-gq-H3V" firstAttribute="top" secondItem="rTn-0O-dx3" secondAttribute="bottom" constant="8" id="SY1-cg-PTl"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="bfM-gq-H3V" secondAttribute="bottom" constant="-1" id="dvA-F1-Igc"/>
-                            <constraint firstItem="rTn-0O-dx3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f5v-NG-Mt9"/>
-                            <constraint firstItem="rTn-0O-dx3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gSK-Cp-bzw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bfM-gq-H3V" secondAttribute="trailing" constant="112" id="lF2-G4-w3L"/>
-                            <constraint firstItem="bfM-gq-H3V" firstAttribute="top" secondItem="rTn-0O-dx3" secondAttribute="bottom" constant="8" id="upg-G8-B9x"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="rTn-0O-dx3" id="iC4-83-7iQ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,14 +25,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

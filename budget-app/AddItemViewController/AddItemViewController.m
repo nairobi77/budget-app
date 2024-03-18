@@ -14,7 +14,7 @@
 NSNumber *const itemHeihgt = @40;
 NSString *const amountInputPlaceholder = @"Amount";
 NSString *const noteInputPlaceholder = @"Note";
-NSString *const savePuttonTitle = @"Save";
+NSString *const saveButtonTitle = @"Save";
 
 @interface AddItemViewController ()
 
@@ -83,7 +83,7 @@ NSString *const savePuttonTitle = @"Save";
     [self.noteInput setPlaceholder:noteInputPlaceholder];
     self.saveButton.layer.cornerRadius = 7.0f;
     [self.saveButton setBackgroundColor:[UIColor grayColor]];
-    [self.saveButton setTitle:savePuttonTitle forState:UIControlStateNormal];
+    [self.saveButton setTitle:saveButtonTitle forState:UIControlStateNormal];
 }
 
 - (void)setupAction {
