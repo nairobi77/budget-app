@@ -13,8 +13,6 @@
 @property (strong, nonatomic) NSManagedObjectContext* mangedContext;
 @property (readonly, strong) NSPersistentCloudKitContainer *persistentContainer;
 
--(void)saveContext;
-
 @end
 
 @implementation Repository

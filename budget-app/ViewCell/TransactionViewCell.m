@@ -21,6 +21,9 @@
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self.date = [UILabel new];
+    self.amount = [UILabel new];
+    self.type = [UILabel new];
     [self setupLayout];
     return self;
 }
@@ -35,9 +38,6 @@
 
 -(void)setupLayout {
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
-    self.date = [UILabel new];
-    self.amount = [UILabel new];
-    self.type = [UILabel new];
     UIStackView *container = [UIStackView new];
     [container setAxis:UILayoutConstraintAxisHorizontal];
     [container setAlignment:UIStackViewAlignmentLeading];
